@@ -349,3 +349,19 @@ function flipCard() {
 </script>
 </body>
 </html>
+function generateDocumentCode() {
+  const letters = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+  const numbers = "0123456789";
+
+  let code = "CX";
+
+  for (let i = 0; i < 6; i++) {
+    code += numbers[Math.floor(Math.random() * numbers.length)];
+  }
+
+  for (let i = 0; i < 2; i++) {
+    code += letters[Math.floor(Math.random() * letters.length)];
+  }
+
+  return code;
+}
