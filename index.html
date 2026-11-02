@@ -3,29 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Torino RP - Portafoglio</title>
+<title>Torino RP | Portafoglio</title>
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   min-height: 100vh;
-  background: #111827;
-  color: white;
+  background:
+    radial-gradient(circle at 50% 0%, #294c6c, #101a2a 75%);
   font-family: Arial, sans-serif;
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 25px 15px;
+  padding: 25px 14px;
 }
-h2 {
-  letter-spacing: 2px;
-  color: #e6a34a;
+.heading {
   text-align: center;
+  margin-bottom: 24px;
+}
+.heading h1 {
+  font-size: 24px;
+  letter-spacing: 4px;
+  margin: 0;
+  color: #e4f4ff;
+}
+.heading p {
+  color: #9bbbd0;
+  font-size: 10px;
+  letter-spacing: 3px;
 }
 .scene {
-  width: min(100%, 420px);
-  height: 270px;
+  width: min(100%, 430px);
+  height: 275px;
   perspective: 1200px;
 }
 .card {
@@ -33,7 +46,7 @@ h2 {
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform .8s;
+  transition: transform .85s;
 }
 .card.flipped {
   transform: rotateY(180deg);
@@ -43,192 +56,247 @@ h2 {
   inset: 0;
   border-radius: 17px;
   overflow: hidden;
+  padding: 17px;
+  color: #183b54;
+  border: 1px solid #91c4df;
   backface-visibility: hidden;
-  padding: 19px;
-  color: #172b3a;
-  background: linear-gradient(135deg,#f8f1df,#e3d7b8);
-  border: 2px solid #d3b77d;
+  box-shadow: 0 15px 40px #0008;
 }
 .front {
-  background-image:
-    radial-gradient(circle at 90% 90%,#e9d9ad 0%,transparent 45%),
-    linear-gradient(135deg,#fff9e9,#e5d9bb);
+  background:
+    radial-gradient(ellipse at 90% 90%, #81c5e7aa, transparent 50%),
+    repeating-linear-gradient(
+      120deg,
+      transparent 0 19px,
+      #ffffff25 20px 21px
+    ),
+    linear-gradient(135deg, #fafdff, #d9effa 55%, #b3dced);
 }
 .back {
   transform: rotateY(180deg);
-  background: linear-gradient(145deg,#f7f0df,#d8c9a4);
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 20px,
+      #ffffff30 21px 22px
+    ),
+    linear-gradient(145deg, #fafdff, #c4e3f2, #e6f5fc);
 }
-.header {
+.top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #a9956c;
-  padding-bottom: 9px;
+  border-bottom: 1px solid #91b9ce;
+  padding-bottom: 10px;
 }
-.header strong {
-  font-size: 13px;
-  letter-spacing: 1px;
+.top h3 {
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  margin: 0;
 }
-.header small {
-  font-size: 9px;
+.top small {
+  font-size: 8px;
   text-align: right;
+  color: #52758b;
+  line-height: 1.5;
 }
-.content {
+.country {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #426e88;
+  margin-top: 9px;
+}
+.main {
   display: flex;
   gap: 13px;
-  margin-top: 17px;
+  margin-top: 13px;
 }
 .photo {
-  width: 91px;
-  height: 117px;
-  flex-shrink: 0;
-  border: 2px solid #b9a477;
-  border-radius: 5px;
-  background: #d8d1c0;
+  width: 105px;
+  height: 137px;
   object-fit: cover;
+  border: 2px solid #88b8d0;
+  border-radius: 5px;
+  background: #eaf5fa;
+  flex-shrink: 0;
 }
-.fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px 8px;
+.information {
   flex: 1;
   min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: start;
+  gap: 13px 8px;
 }
 .field small {
   display: block;
-  font-size: 8px;
-  color: #776a50;
-  margin-bottom: 3px;
+  color: #54788f;
+  font-size: 7px;
+  letter-spacing: .6px;
+  margin-bottom: 4px;
 }
 .field strong {
+  font-size: 11px;
   display: block;
-  font-size: 12px;
   overflow-wrap: anywhere;
+  color: #173d55;
 }
-.watermark {
+.document-number {
+  margin-top: 12px;
+  font-size: 8px;
+  color: #426c83;
+  letter-spacing: 1px;
+}
+.rp-mark {
   position: absolute;
   right: 12px;
   bottom: 10px;
   font-size: 8px;
-  color: #947d50;
-  letter-spacing: 2px;
+  color: #477b97;
+  letter-spacing: 1.5px;
 }
 .back-title {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
+  margin: 18px 0;
   letter-spacing: 1px;
-  margin-bottom: 18px;
 }
-.back-data {
+.back-info {
   font-size: 10px;
   line-height: 2;
-  overflow-wrap: anywhere;
 }
-.code {
-  background: #d6c9a9;
-  padding: 9px;
+.fake-code {
+  margin-top: 16px;
+  border: 1px solid #8bb9d0;
+  background: #e1f2fa;
+  padding: 10px;
   border-radius: 5px;
-  margin-top: 15px;
   font-family: monospace;
+  color: #315b73;
   font-size: 10px;
-  line-height: 1.8;
+  line-height: 1.7;
   overflow-wrap: anywhere;
 }
-button {
-  margin-top: 28px;
-  border: 0;
-  border-radius: 10px;
-  background: #d68c32;
-  color: white;
-  font-size: 15px;
+.warning {
+  margin-top: 10px;
+  font-size: 8px;
+  color: #8b3c36;
   font-weight: bold;
-  padding: 13px 35px;
-  cursor: pointer;
+  letter-spacing: 1px;
 }
-button:active { transform: scale(.97); }
+.flip {
+  margin-top: 28px;
+  padding: 14px 38px;
+  border: 1px solid #9bcde6;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e5f7ff, #77b9db);
+  color: #173d55;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 20px #0005;
+}
+.flip:active {
+  transform: scale(.97);
+}
 .footer {
-  color: #9ca3af;
-  font-size: 11px;
-  margin-top: 20px;
   text-align: center;
+  margin-top: 23px;
+  color: #9bb4c5;
+  font-size: 9px;
+  letter-spacing: 1px;
+  line-height: 1.8;
 }
 </style>
 </head>
 <body>
-<h2>TORINO RP</h2>
+<div class="heading">
+  <h1>TORINO RP</h1>
+  <p>PORTAFOGLIO DIGITALE</p>
+</div>
 <div class="scene">
-  <div class="card" id="card">
-    <div class="side front">
-      <div class="header">
-        <strong>COMUNE DI TORINO</strong>
-        <small>DOCUMENTO RP<br>IDENTITÀ CIVICA</small>
+<div class="card" id="card">
+<!-- FRONTE -->
+<div class="side front">
+  <div class="top">
+    <h3>COMUNE DI TORINO</h3>
+    <small>CARTA IDENTITÀ RP<br>DOCUMENTO CIVICO</small>
+  </div>
+  <div class="country">REPUBBLICA DI TORINO RP • ARCHIVIO ROLEPLAY</div>
+  <div class="main">
+    <img id="photo" class="photo"
+    src="https://placehold.co/210x274/e5f3fa/41667b?text=FOTO">
+    <div class="information">
+      <div class="field">
+        <small>COGNOME</small>
+        <strong id="surname">WANGA</strong>
       </div>
-      <div class="content">
-        <img id="photo" class="photo"
-        src="https://placehold.co/180x230/e5dcc8/555?text=FOTO">
-        <div class="fields">
-          <div class="field">
-            <small>COGNOME</small>
-            <strong id="surname">WANGA</strong>
-          </div>
-          <div class="field">
-            <small>NOME</small>
-            <strong id="name">MATTIA</strong>
-          </div>
-          <div class="field">
-            <small>DATA DI NASCITA</small>
-            <strong id="birth">--/--/----</strong>
-          </div>
-          <div class="field">
-            <small>SESSO</small>
-            <strong id="sex">M</strong>
-          </div>
-          <div class="field">
-            <small>CITTADINANZA</small>
-            <strong id="nationality">ITA</strong>
-          </div>
-          <div class="field">
-            <small>SCADENZA</small>
-            <strong>02/11/2036</strong>
-          </div>
-          <div class="field">
-            <small>LUOGO DI NASCITA</small>
-            <strong>TORINO</strong>
-          </div>
-          <div class="field">
-            <small>ETÀ</small>
-            <strong id="age">--</strong>
-          </div>
-        </div>
+      <div class="field">
+        <small>NOME</small>
+        <strong id="name">MATTIA</strong>
       </div>
-      <div class="watermark">FACSIMILE • SOLO ROLEPLAY</div>
-    </div>
-    <div class="side back">
-      <div class="header">
-        <strong>TORINO RP</strong>
-        <small>RETRO DOCUMENTO<br>ARCHIVIO CIVICO RP</small>
+      <div class="field">
+        <small>DATA DI NASCITA</small>
+        <strong id="birth">--/--/----</strong>
       </div>
-      <div class="back-title">DATI DEL DOCUMENTO</div>
-      <div class="back-data">
-        IDENTIFICATIVO RP: <span id="code">TRP-000000</span><br>
-        COMUNE: TORINO<br>
-        LUOGO DI NASCITA: TORINO<br>
-        CITTADINANZA: <span id="backNationality">ITA</span><br>
-        SCADENZA: 02/11/2036
+      <div class="field">
+        <small>SESSO</small>
+        <strong id="sex">M</strong>
       </div>
-      <div class="code">
-        TRP | DOCUMENTO FITTIZIO<br>
-        <span id="backName">NOME COGNOME</span><br>
-        NON VALIDO COME DOCUMENTO UFFICIALE
+      <div class="field">
+        <small>CITTADINANZA</small>
+        <strong id="nationality">ITA</strong>
       </div>
-      <div class="watermark">TORINO RP • FACSIMILE</div>
+      <div class="field">
+        <small>ETÀ</small>
+        <strong id="age">--</strong>
+      </div>
+      <div class="field">
+        <small>LUOGO DI NASCITA</small>
+        <strong>TORINO</strong>
+      </div>
+      <div class="field">
+        <small>SCADENZA</small>
+        <strong>02/11/2036</strong>
+      </div>
     </div>
   </div>
+  <div class="document-number">
+    IDENTIFICATIVO: <span id="frontId">TRP-000000</span>
+  </div>
+  <div class="rp-mark">FACSIMILE • SOLO ROLEPLAY</div>
 </div>
-<button onclick="flipCard()">↻ GIRA CARTA</button>
+<!-- RETRO -->
+<div class="side back">
+  <div class="top">
+    <h3>TORINO RP</h3>
+    <small>ARCHIVIO CIVICO<br>RETRO DOCUMENTO</small>
+  </div>
+  <div class="back-title">DATI DEL DOCUMENTO</div>
+  <div class="back-info">
+    NOME COMPLETO: <span id="backName">MATTIA WANGA</span><br>
+    DATA DI NASCITA: <span id="backBirth">--/--/----</span><br>
+    COMUNE: TORINO<br>
+    CITTADINANZA: <span id="backNationality">ITA</span><br>
+    SCADENZA: 02/11/2036
+  </div>
+  <div class="fake-code">
+    TORINO RP<br>
+    IDENTIFICATIVO FITTIZIO: <span id="backId">TRP-000000</span><br>
+    DOCUMENTO DI ROLEPLAY<br>
+    NON VALIDO COME DOCUMENTO UFFICIALE
+  </div>
+  <div class="warning">FACSIMILE • DOCUMENTO NON UFFICIALE</div>
+  <div class="rp-mark">TORINO RP</div>
+</div>
+</div>
+</div>
+<button class="flip" onclick="flipCard()">
+  ↻ GIRA CARTA
+</button>
 <div class="footer">
-  TORINO RP • SISTEMA PORTAFOGLIO<br>
-  Documento esclusivamente scenografico RP.
+  TORINO RP • SISTEMA ANAGRAFE<br>
+  DOCUMENTO ESCLUSIVAMENTE SCENOGRAFICO ROLEPLAY
 </div>
 <script>
 const params = new URLSearchParams(location.search);
@@ -241,13 +309,17 @@ const birth = get("data", "");
 const sex = get("sesso", "M").toUpperCase();
 const nationality = get("cittadinanza", "ITA").toUpperCase();
 const photo = get("foto", "");
+const id = get("id", "000000");
 document.getElementById("name").textContent = first;
 document.getElementById("surname").textContent = last;
 document.getElementById("birth").textContent = birth || "--/--/----";
 document.getElementById("sex").textContent = sex;
 document.getElementById("nationality").textContent = nationality;
-document.getElementById("backNationality").textContent = nationality;
 document.getElementById("backName").textContent = first + " " + last;
+document.getElementById("backBirth").textContent = birth || "--/--/----";
+document.getElementById("backNationality").textContent = nationality;
+document.getElementById("frontId").textContent = "TRP-" + id;
+document.getElementById("backId").textContent = "TRP-" + id;
 if (birth) {
   const parts = birth.split("/");
   if (parts.length === 3) {
@@ -255,7 +327,15 @@ if (birth) {
     if (!isNaN(date.getTime())) {
       let age = new Date().getFullYear() - date.getFullYear();
       const now = new Date();
-      if (now < new Date(now.getFullYear(), date.getMonth(), date.getDate())) age--;
+      if (
+        now < new Date(
+          now.getFullYear(),
+          date.getMonth(),
+          date.getDate()
+        )
+      ) {
+        age--;
+      }
       document.getElementById("age").textContent = age + " ANNI";
     }
   }
@@ -263,8 +343,6 @@ if (birth) {
 if (photo && /^https?:\/\//i.test(photo)) {
   document.getElementById("photo").src = photo;
 }
-const id = get("id", "000000");
-document.getElementById("code").textContent = "TRP-" + id;
 function flipCard() {
   document.getElementById("card").classList.toggle("flipped");
 }
